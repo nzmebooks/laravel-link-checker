@@ -18,7 +18,7 @@ class LogBrokenLinks extends BaseReporter
     /**
      * Called when the crawl has ended.
      */
-    public function finishedCrawling()
+    public function finishedCrawling(): void
     {
         $this->log->info('link checker summary');
 
@@ -50,8 +50,9 @@ class LogBrokenLinks extends BaseReporter
     public function crawlFailed(
         UriInterface $url,
         RequestException $requestException,
-        ?UriInterface $foundOnUrl = null
-    ) {
+        ?UriInterface $foundOnUrl = null,
+        ?string $linkText = null,
+    ): void {
         parent::crawlFailed($url, $requestException, $foundOnUrl);
 
         $statusCode = $requestException->getCode();

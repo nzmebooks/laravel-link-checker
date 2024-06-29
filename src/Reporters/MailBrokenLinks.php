@@ -27,7 +27,7 @@ class MailBrokenLinks extends BaseReporter
     /**
      * Called when the crawl has ended.
      */
-    public function finishedCrawling()
+    public function finishedCrawling(): void
     {
         if (! $this->crawledBadUrls()) {
             return;
@@ -52,11 +52,12 @@ class MailBrokenLinks extends BaseReporter
     public function crawled(
         UriInterface $url,
         ResponseInterface $response,
-        ?UriInterface $foundOnUrl = null
-    ) {
+        ?UriInterface $foundOnUrl = null,
+        ?string $linkText = null,
+    ): void {
         $url->foundOnUrl = $foundOnUrl;
 
-        return parent::crawled($url, $response, $foundOnUrl);
+        // return parent::crawled($url, $response, $foundOnUrl);
     }
 
     /**
@@ -69,10 +70,11 @@ class MailBrokenLinks extends BaseReporter
     public function crawlFailed(
         UriInterface $url,
         RequestException $requestException,
-        ?UriInterface $foundOnUrl = null
-    ) {
+        ?UriInterface $foundOnUrl = null,
+        ?string $linkText = null,
+    ): void {
         $url->foundOnUrl = $foundOnUrl;
 
-        return parent::crawlFailed($url, $requestException, $foundOnUrl);
+        // return parent::crawlFailed($url, $requestException, $foundOnUrl);
     }
 }

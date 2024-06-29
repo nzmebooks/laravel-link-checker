@@ -6,7 +6,7 @@ use GuzzleHttp\Exception\RequestException;
 use Illuminate\Support\Str;
 use Psr\Http\Message\ResponseInterface;
 use Psr\Http\Message\UriInterface;
-use Spatie\Crawler\CrawlObserver;
+use Spatie\Crawler\CrawlObservers\CrawlObserver;
 
 abstract class BaseReporter extends CrawlObserver
 {
@@ -23,21 +23,23 @@ abstract class BaseReporter extends CrawlObserver
      * @param \Psr\Http\Message\UriInterface      $url
      * @param \Psr\Http\Message\ResponseInterface $response
      * @param null|\Psr\Http\Message\UriInterface $foundOnUrl
+     * @param null|\Psr\Http\Message\UriInterface $linkText
      *
      * @return int|string
      */
     public function crawled(
         UriInterface $url,
         ResponseInterface $response,
-        ?UriInterface $foundOnUrl = null
-    ) {
+        ?UriInterface $foundOnUrl = null,
+        ?string $linkText = null,
+    ): void {
         $statusCode = $response->getStatusCode();
 
         if (! $this->isExcludedStatusCode($statusCode)) {
             $this->urlsGroupedByStatusCode[$statusCode][] = $url;
         }
 
-        return $statusCode;
+        // return $statusCode;
     }
 
     /**
@@ -46,19 +48,21 @@ abstract class BaseReporter extends CrawlObserver
      * @param \Psr\Http\Message\UriInterface $url
      * @param \GuzzleHttp\Exception\RequestException $requestException
      * @param \Psr\Http\Message\UriInterface|null $foundOnUrl
+     * @param null|\Psr\Http\Message\UriInterface $linkText
      */
     public function crawlFailed(
         UriInterface $url,
         RequestException $requestException,
-        ?UriInterface $foundOnUrl = null
-    ) {
+        ?UriInterface $foundOnUrl = null,
+        ?string $linkText = null,
+    ): void {
         $statusCode = $requestException->getCode();
 
         if (! $this->isExcludedStatusCode($statusCode)) {
             $this->urlsGroupedByStatusCode[$statusCode][] = $url;
         }
 
-        return $statusCode;
+        // return $statusCode;
     }
 
     /**

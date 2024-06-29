@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-link-checker` will be documented in this file
 
+## 4.4.0 2024-06-29
+
+- update spatie/crawler to 8.2.0
+
 ## 4.3.0 2024-06-29
 
 - support laravel 11

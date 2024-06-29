@@ -5,8 +5,8 @@ namespace Spatie\LinkChecker;
 use Exception;
 use Illuminate\Console\Command;
 use Spatie\Crawler\Crawler;
-use Spatie\Crawler\CrawlObserver;
-use Spatie\Crawler\CrawlProfile;
+use Spatie\Crawler\CrawlObservers\CrawlObserver;
+use Spatie\Crawler\CrawlProfiles\CrawlProfile;
 
 class CheckLinksCommand extends Command
 {

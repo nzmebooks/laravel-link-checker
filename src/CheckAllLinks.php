@@ -2,7 +2,7 @@
 
 namespace Spatie\LinkChecker;
 
-use Spatie\Crawler\CrawlAllUrls;
+use Spatie\Crawler\CrawlProfiles\CrawlAllUrls;
 
 class CheckAllLinks extends CrawlAllUrls
 {
