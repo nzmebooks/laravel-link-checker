@@ -2,7 +2,12 @@
 
 All notable changes to `laravel-link-checker` will be documented in this file
 
-## 4.2.0 2009-11-26
+## 4.3.0 2024-06-29
+
+- support laravel 11
+- support php 8.2
+
+## 4.2.0 2019-11-26
 
 - remove support for older php versions
 - remove support for older laravel versions
@@ -54,7 +59,7 @@ All notable changes to `laravel-link-checker` will be documented in this file
 
 ## 1.0.5 - 2017-06-29
 **THIS VERSION WAS TAGGED INCORRECTLY, DO NOT USE**
-- remove hidden `laravel-collective/html` dependency 
+- remove hidden `laravel-collective/html` dependency
 
 ## 1.0.4 - 2017-01-19
 **THIS VERSION WAS TAGGED INCORRECTLY, DO NOT USE**
